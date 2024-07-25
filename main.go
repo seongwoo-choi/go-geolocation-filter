@@ -42,7 +42,6 @@ func geoIPMiddleware(next http.HandlerFunc) http.HandlerFunc {
 			w.Header().Set("X-Geo-City", record.City.Names["en"])
 			w.Header().Set("X-Geo-Latitude", fmt.Sprintf("%f", record.Location.Latitude))
 			w.Header().Set("X-Geo-Longitude", fmt.Sprintf("%f", record.Location.Longitude))
-			w.Header().Set("X-User-Agent", r.Header.Get("User-Agent"))
 
 			log.Printf("URL: %v, USER_AGETN: %v, IP: %s (Original: %s), Country: %s, City: %s, Lat: %f, Lon: %f",
 				r.URL.Path, r.Header.Get("User-Agent"), ip, originalIP, record.Country.IsoCode, record.City.Names["en"],
