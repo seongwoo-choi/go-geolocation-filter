@@ -62,7 +62,7 @@ func getIP(r *http.Request) string {
 		ip = r.RemoteAddr
 	}
 
-	if ip == "127.0.0.1" || strings.Contains(ip, "::1") || ip == "localhost" {
+	if strings.Contains(ip, "127.0.0.1") || strings.Contains(ip, "::1") || strings.Contains(ip, "localhost") {
 		return "8.8.8.8"
 	}
 
